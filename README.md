@@ -17,8 +17,6 @@ The [dataset](http://archive.ics.uci.edu/ml/datasets/Motion+Capture+Hand+Posture
 * Standard Deviation of all *x*, *y* and *z* components respectively (3)
 * Number of detected Points (1)
 
-<a\>
-
 which gives me 13 features to work with. Afterwards, I normalized each sample to a range between 0 and 1, to not be dependent on the camera resolution or hand size of different samples.
 
 *Note:* I pre-processed the test data in the same step. Normally, this is not something you should do but since each sample is preprocessed individually, it doesn't make a difference when the test set is pre-processed.
@@ -31,7 +29,7 @@ The baseline model for this problem is Naive Bayes. This model assumes no depend
 
 ### Support Vector Machine
 
-An SVM tries to find a gap between classes that is as large as possible in order to make the classification as robust as possible. I used a Gaussian kernel and cross-validated on several parameters for the regularization parameter C, which is the loss added to the weights, and $\gamma$ which is the kernel coefficient. The chosen parameters were C=0.1 and &gamma; = 1.
+An SVM tries to find a gap between classes that is as large as possible in order to make the classification as robust as possible. I used a Gaussian kernel and cross-validated on several parameters for the regularization parameter C, which is the loss added to the weights, and &gamma; which is the kernel coefficient. The chosen parameters were C=0.1 and &gamma; = 1.
 
 ### Neural Network
 
@@ -39,11 +37,11 @@ The most complex of the models is the Neural Network. In fact, running it with d
 
 ### k Nearest Neighbors
 
-The k Nearest Neighbors algorithm looks at the $k$ nearest points to a given datapoint and is classified depending on the classes of those neighbors. There are mainly two hyper-parameters, one is the number of neighbors that are being evaluated and the other is how the weights are computed. 'Uniform' means that each neighbor is counted equally, while in 'distance' the weight of the neighbors depends on the distance to the datapoint. The values that were chosen are k=11 and weights='distance'.
+The k Nearest Neighbors algorithm looks at the k nearest points to a given datapoint and is classified depending on the classes of those neighbors. There are mainly two hyper-parameters, one is the number of neighbors that are being evaluated and the other is how the weights are computed. 'Uniform' means that each neighbor is counted equally, while in 'distance' the weight of the neighbors depends on the distance to the datapoint. The values that were chosen are k=11 and weights='distance'.
 
 ### Perceptron
 
-I do not expect a Perceptron to perform very well on this data since it is a linear classifier. We do not know how whether the data is linearly separable which is a requirement for a Perceptron to perform well. The hyper-parameters tested for cross-validation were the type of penalty and the penalty value $\alpha$. The best result were achieved with penalty='l2' and &alpha;=0.0001.
+I do not expect a Perceptron to perform very well on this data since it is a linear classifier. We do not know how whether the data is linearly separable which is a requirement for a Perceptron to perform well. The hyper-parameters tested for cross-validation were the type of penalty and the penalty value &alpha;. The best result were achieved with penalty='l2' and &alpha;=0.0001.
 
 ## Results
 
